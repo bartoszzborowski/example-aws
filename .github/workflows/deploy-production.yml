@@ -58,7 +58,7 @@ jobs:
   validate-migration:
     name: Validate migration
     needs: build-and-push
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     services:
       mysql:
         image: mysql:8.0
@@ -133,18 +133,18 @@ jobs:
           echo "Timed out waiting for refresh"
           exit 1
 
-      - name: Notify success
-        if: success()
-        uses: Ilshidur/action-discord@master
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        with:
-          args: "Deploy produkcyjny stream-my-sport (${{ github.sha }}) zakończony sukcesem!"
+      # - name: Notify success
+      #   if: success()
+      #   uses: Ilshidur/action-discord@master
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #   with:
+      #     args: "Deploy produkcyjny stream-my-sport (${{ github.sha }}) zakończony sukcesem!"
 
-      - name: Notify failure
-        if: failure()
-        uses: Ilshidur/action-discord@master
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        with:
-          args: "Deploy produkcyjny stream-my-sport (${{ github.sha }}) zakończył się błędem!"
+      # - name: Notify failure
+      #   if: failure()
+      #   uses: Ilshidur/action-discord@master
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #   with:
+      #     args: "Deploy produkcyjny stream-my-sport (${{ github.sha }}) zakończył się błędem!"

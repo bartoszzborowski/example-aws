@@ -67,18 +67,18 @@ jobs:
       - name: Run tests
         run: php artisan test
 
-      - name: Notify success on Discord
-        if: success()
-        uses: Ilshidur/action-discord@master
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        with:
-          args: "Testy ${{ github.repository }} zakonczone sukcesem na branchu ${{ github.ref_name }}!"
+      # - name: Notify success on Discord
+      #   if: success()
+      #   uses: Ilshidur/action-discord@master
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #   with:
+      #     args: "Testy ${{ github.repository }} zakonczone sukcesem na branchu ${{ github.ref_name }}!"
 
-      - name: Notify failure on Discord
-        if: failure()
-        uses: Ilshidur/action-discord@master
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        with:
-          args: "Testy ${{ github.repository }} nie przeszly na branchu ${{ github.ref_name }}!"
+      # - name: Notify failure on Discord
+      #   if: failure()
+      #   uses: Ilshidur/action-discord@master
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #   with:
+      #     args: "Testy ${{ github.repository }} nie przeszly na branchu ${{ github.ref_name }}!"
